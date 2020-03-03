@@ -1,0 +1,15 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+import TextInput, { TextInput as UnthemedTextInput } from './TextInput';
+
+<Meta title="form/input/TextInput" component={TextInput} />
+
+# TextInput
+
+<Preview>
+  <Story name="Text Input">
+    <TextInput placeholder="username" />
+  </Story>
+</Preview>
+
+<Props of={UnthemedTextInput} />

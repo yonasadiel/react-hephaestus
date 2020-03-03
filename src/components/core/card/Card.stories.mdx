@@ -1,0 +1,34 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+import Card, { Card as UnthemedCard } from './Card';
+import Button from '../button/Button';
+import '../../../common/storybook.scss';
+
+<Meta title="core/Card" component={Card} />
+
+# Card
+
+<Preview>
+  <Story name="Card">
+    <div>
+      <Card cardType="elevated">
+        <h1>Card Title</h1>
+        <p>Lorem ipsum sit dolor amet</p>
+      </Card>
+      <divider />
+      <Card cardType="outlined">
+        <h1>Card Title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis tristique nibh volutpat faucibus. Sed sed nunc neque. Proin sit amet orci eget orci ullamcorper efficitur. Donec imperdiet urna sed leo suscipit sodales. Mauris lacinia, nibh id mollis dignissim, sapien enim auctor nulla, consectetur blandit mi libero at neque.</p>
+        <p>Quisque molestie libero at sodales posuere. Praesent aliquet nulla in nibh lacinia auctor. Pellentesque quis dapibus arcu. Nunc quis mollis mauris, et dignissim metus. Vivamus quis ligula volutpat metus placerat tristique. Quisque et lorem a metus lacinia vestibulum a sed felis. Pellentesque suscipit quam eget nisi tincidunt semper.</p>
+        <div
+          style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <Button>Button 1</Button> <divider />
+          <Button>Button 2</Button> <divider />
+          <Button>Button 3</Button>
+        </div>
+      </Card>
+    </div>
+  </Story>
+</Preview>
+
+<Props of={UnthemedCard} />

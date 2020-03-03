@@ -1,0 +1,23 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+
+import Button, { Button as UnthemedButton } from './Button';
+import '../../../common/storybook.scss';
+
+<Meta
+  title="core/Button"
+  component={Button}
+ />
+
+# Button
+
+<Preview>
+  <Story name="Button">
+    <div>
+      <Button buttonType="contained">Contained</Button> <divider />
+      <Button buttonType="outlined">Outlined</Button> <divider />
+      <Button buttonType="text">Text</Button>
+    </div>
+  </Story>
+</Preview>
+
+<Props of={UnthemedButton} />

@@ -1,0 +1,64 @@
+@import '../../../common/base';
+
+$class-text-input-wrapper: #{$ns}-text-input-wrapper;
+$class-text-input-label: #{$ns}-text-input-label;
+$class-text-input-underline: #{$ns}-text-input-underline;
+
+.#{$class-text-input} {
+  border-width: 0 0 1px 0;
+  width: 100%;
+  border-color: rgba(0, 0, 0, 0.4);
+  padding: 8px 0;
+  background-color: transparent;
+  outline: none;
+  order: 1;
+
+  &::placeholder {
+    transition: opacity .2s ease .2s;
+    opacity: 1;
+  }
+}
+
+.#{$class-text-input-wrapper} {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.#{$class-text-input-label} {
+  position: relative;
+  opacity: 0;
+  order: 0;
+  transition: top .2s ease, opacity .2s ease;
+  top: 10px;
+}
+
+.#{$class-text-input}:focus {
+  &::placeholder {
+    transition: opacity .2s ease;
+    opacity: 0;
+  }
+}
+
+.#{$class-text-input}:focus ~ .#{$class-text-input-label} {
+  opacity: .5;
+  top: 0;
+  transition: top .2s ease .2s, opacity .2s ease .2s;
+}
+
+.#{$class-text-input}:focus ~ .#{$class-text-input-underline},
+.#{$class-text-input}:hover ~ .#{$class-text-input-underline} {
+  width: 100%;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+.#{$class-text-input-underline} {
+  width: 0%;
+  height: 2px;
+  margin: -2px auto 0 auto;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  align-self: center;
+  order: 1;
+}

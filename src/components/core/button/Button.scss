@@ -1,0 +1,14 @@
+@import '../../../common/base';
+
+.#{$class-button} {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  border-width: 0;
+  border-style: solid;
+  cursor: pointer;
+  padding: 5px 15px;
+  min-width: 64px;
+  height: 36px;
+}
