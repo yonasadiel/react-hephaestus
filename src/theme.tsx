@@ -62,6 +62,10 @@ const getTheme = (providedTheme: Theme) => {
 export default ThemeContext.Provider;
 
 export interface ThemeProps {
+  /**
+   * Provided theme from ThemeProvider.
+   * Will use default theme if not present.
+   */
   theme: Theme;
 };
 

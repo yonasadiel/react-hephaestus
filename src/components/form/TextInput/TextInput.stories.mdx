@@ -7,8 +7,22 @@ import TextInput, { TextInput as UnthemedTextInput } from './TextInput';
 # TextInput
 
 <Preview>
-  <Story name="Text Input">
-    <TextInput placeholder="username" />
+  <Story name="TextInput">
+    <div>
+      <TextInput placeholder="username" />
+      <div className="flex-row align-items-baseline">
+        <div className="flex-1">Without placeholder:</div>
+        <TextInput wrapperStyle={{flex: 2}} underlineAnimation="left" />
+      </div>
+      <div className="flex-row align-items-baseline">
+        <div className="flex-1">Without underline animation:</div>
+        <TextInput wrapperStyle={{flex: 2}} underlineAnimation="none" />
+      </div>
+      <div className="flex-row align-items-baseline">
+        <div className="flex-1">With help text:</div>
+        <TextInput wrapperStyle={{flex: 2}} helpText="You can add some text to help user fill the input" />
+      </div>
+    </div>
   </Story>
 </Preview>
 
