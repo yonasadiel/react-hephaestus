@@ -8,8 +8,10 @@
     "type": "git",
     "url": "https://github.com/yonasadiel/react-hephaestus.git"
   },
+  "main": "dist/index.js",
+  "license": "Apache-2.0",
   "homepage": "https://hephaestus.yonasadiel.com",
-  "keywords": ["react", "ui-toolkit"],
+  "keywords": ["react", "ui", "components"],
   "peerDependencies": {
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
@@ -22,8 +24,11 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
+    "build": "rm -rf ./dist && tsc -p .",
+    "prepare": "yarn build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

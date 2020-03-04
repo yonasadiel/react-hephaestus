@@ -5,8 +5,9 @@ import * as Classes from '../../../common/classes';
 import { ThemeProps, withTheme } from '../../../theme';
 import './Button.scss';
 
-const BUTTON_TYPE_CONTAINED = 'contained';
-const BUTTON_TYPE_OUTLINED = 'outlined';
+export const BUTTON_TYPE_CONTAINED = 'contained';
+export const BUTTON_TYPE_OUTLINED = 'outlined';
+export const BUTTON_TYPE_TEXT = 'text';
 
 type ButtonType = 'contained' | 'outlined' | 'text';
 
