@@ -1,7 +1,7 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 
-import Button, { Button as UnthemedButton } from './Button';
-import '../../../common/storybook.scss';
+import '../../../common/storybook.css';
+import Button from './Button';
 
 <Meta
   title="core/Button"
@@ -20,4 +20,10 @@ import '../../../common/storybook.scss';
   </Story>
 </Preview>
 
-<Props of={UnthemedButton} />
+## Props
+
+This component accepts all button props, with additional props:
+
+| Prop names              | Description                                              | Default                  |
+| ----------------------- | -------------------------------------------------------- | ------------------------ |
+| <code>buttonType</code> | <code>'contained' &#124; 'outlined' &#124; 'text'</code> | <code>'contained'</code> |

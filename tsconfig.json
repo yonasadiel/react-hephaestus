@@ -8,12 +8,10 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
     "jsx": "react",
     "declaration": true,
     "outDir": "./dist",
     "removeComments": true,
-    "isolatedModules": true,
 
     "strict": true,
     "noImplicitAny": true,
@@ -31,7 +29,6 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "./src/**/*.scss",
     "./src/**/*.tsx",
     "./src/**/*.ts"
   ],

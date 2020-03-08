@@ -9,26 +9,22 @@
     "url": "https://github.com/yonasadiel/react-hephaestus.git"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "Apache-2.0",
   "homepage": "https://hephaestus.yonasadiel.com",
-  "keywords": ["react", "ui", "components"],
+  "keywords": [
+    "react",
+    "ui",
+    "components"
+  ],
   "peerDependencies": {
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "classnames": "^2.2.6",
-    "node-sass": "^4.13.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
-    "typescript": "~3.7.2"
+    "aphrodite": "^2.4.0",
+    "react": "^16.7.0"
   },
   "scripts": {
-    "build": "rm -rf ./dist && tsc -p .",
-    "prepare": "yarn build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "eject": "react-scripts eject"
+    "build": "tsc",
+    "build:storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,10 +43,16 @@
   },
   "devDependencies": {
     "@storybook/addon-docs": "^5.3.14",
-    "@storybook/preset-create-react-app": "^1.5.2",
+    "@storybook/preset-typescript": "^2.1.0",
     "@storybook/react": "^5.3.14",
-    "@types/classnames": "^2.2.9",
+    "@types/node": "^13.9.0",
+    "@types/react": "^16.7.0",
+    "aphrodite": "^2.4.0",
     "babel-loader": "^8.0.6",
-    "react-is": "^16.13.0"
-  }
+    "fork-ts-checker-webpack-plugin": "^4.0.5",
+    "react-docgen-typescript-loader": "^3.7.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {}
 }
