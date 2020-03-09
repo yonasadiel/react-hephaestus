@@ -35,7 +35,7 @@ const Button: React.FunctionComponent<ButtonProps & ThemeProps> = (props) => {
 
   const classNames = `${buttonClass} ${className}`;
 
-  return <button className={classNames} type="button" {...htmlProps} />;
+  return <button className={classNames} {...htmlProps} />;
 };
 
 Button.defaultProps = {

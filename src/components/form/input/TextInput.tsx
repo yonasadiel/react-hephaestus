@@ -8,7 +8,7 @@ export const UNDERLINE_FROM_CENTER = 'center';
 export const UNDERLINE_FROM_LEFT = 'left';
 export const UNDERLINE_NONE = 'none';
 
-export interface TextInputProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * Placeholder for text input.
    * If undefined, then the placeholder and label won't be rendered.

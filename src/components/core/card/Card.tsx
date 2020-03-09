@@ -10,7 +10,7 @@ export const CARD_TYPE_OUTLINED = 'outlined';
 
 type CardType = 'elevated' | 'outlined';
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.HTMLProps<HTMLDivElement> {
   cardType?: CardType;
 };
 
