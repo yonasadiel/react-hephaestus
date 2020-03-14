@@ -34,10 +34,25 @@ export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
    * @default undefined
    */
   helpText?: string;
+
+  /**
+   * Error text that indicates the error of current field.
+   * @default undefined
+   */
+  errorText?: string;
 };
 
 const TextInput: React.FunctionComponent<TextInputProps & ThemeProps> = (props) => {
-  const { className, tStyles, placeholder, underlineAnimation, wrapperStyle, helpText, ...htmlProps } = props;
+  const {
+    className,
+    tStyles,
+    placeholder,
+    underlineAnimation,
+    wrapperStyle,
+    helpText,
+    errorText,
+    ...htmlProps
+  } = props;
 
   const inputClass = css(
     styles.input,
@@ -54,6 +69,7 @@ const TextInput: React.FunctionComponent<TextInputProps & ThemeProps> = (props) 
   const wrapperClass = css(styles.wrapper);
   const labelClass = css(styles.label);
   const helpTextClass = css(styles.helpText);
+  const errorTextClass = css(styles.errorText);
 
   const showUnderline = (underlineAnimation !== UNDERLINE_NONE);
 
@@ -63,6 +79,7 @@ const TextInput: React.FunctionComponent<TextInputProps & ThemeProps> = (props) 
       { placeholder && (<label className={labelClass}>{placeholder}</label>) }
       { showUnderline && (<div className={underlineClass} />) }
       { !!helpText && (<small className={helpTextClass}>{helpText}</small>) }
+      { !!errorText && (<small className={errorTextClass}>{errorText}</small>) }
     </div>
   );
 };
@@ -72,6 +89,7 @@ TextInput.defaultProps = {
   wrapperStyle: {},
   underlineAnimation: UNDERLINE_FROM_CENTER,
   helpText: undefined,
+  errorText: undefined,
 };
 
 export default withTheme<TextInputProps>(TextInput);

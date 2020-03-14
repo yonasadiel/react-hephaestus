@@ -75,8 +75,15 @@ export default StyleSheet.create({
 
   helpText: {
     marginTop: 2,
-    opacity: .5,
     order: 2,
     fontSize: '.75em',
+    color: '#999999'
+  },
+
+  errorText: {
+    marginTop: 2,
+    order: 2,
+    fontSize: '.75em',
+    color: '#ff2222',
   },
 });
