@@ -1,12 +1,16 @@
-import { css } from 'aphrodite/no-important';
+import classnames from 'classnames';
 import React from 'react';
 
-import { withTheme, ThemeProps } from '../../../common/theme';
-import styles from './styles';
+import * as cStyles from '../../../common/styles/';
+import { InjectedThemeProps } from '../../../common/provider/theme';
+import { withHephaestusContext } from '../../../common/provider/';
+import './TextInput.scss';
 
 export const UNDERLINE_FROM_CENTER = 'center';
 export const UNDERLINE_FROM_LEFT = 'left';
 export const UNDERLINE_NONE = 'none';
+
+export type UnderlineAnimation = 'center' | 'left' | 'none';
 
 export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
   /**
@@ -27,7 +31,7 @@ export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
    * If set to none, the underline won't be rendered.
    * @default center
    */
-  underlineAnimation?: 'center' | 'left' | 'none';
+  underlineAnimation?: UnderlineAnimation;
 
   /**
    * Short text to help user filling the input.
@@ -42,10 +46,10 @@ export interface TextInputProps extends React.HTMLProps<HTMLInputElement> {
   errorText?: string;
 };
 
-const TextInput: React.FunctionComponent<TextInputProps & ThemeProps> = (props) => {
+const TextInput: React.FunctionComponent<TextInputProps & InjectedThemeProps> = (props) => {
   const {
     className,
-    tStyles,
+    theme,
     placeholder,
     underlineAnimation,
     wrapperStyle,
@@ -54,32 +58,29 @@ const TextInput: React.FunctionComponent<TextInputProps & ThemeProps> = (props) 
     ...htmlProps
   } = props;
 
-  const inputClass = css(
-    styles.input,
-    tStyles.fontSizeRegular,
-  );
-  const classNames = `${inputClass} ${className}`
-
-  const underlineClass = css(
-    tStyles.bgColorPrimary,
-    (underlineAnimation === UNDERLINE_FROM_CENTER) && styles.underlineFromCenter,
-    (underlineAnimation === UNDERLINE_FROM_LEFT) && styles.underlineFromLeft,
+  const inputClass = classnames(
+    theme.fontSizeRegular,
+    className,
   );
 
-  const wrapperClass = css(styles.wrapper);
-  const labelClass = css(styles.label);
-  const helpTextClass = css(styles.helpText);
-  const errorTextClass = css(styles.errorText);
+  const underlineClass = classnames(
+    'underline',
+    theme.bgColorPrimary,
+    (underlineAnimation === UNDERLINE_FROM_CENTER) && 'from-center',
+    (underlineAnimation === UNDERLINE_FROM_LEFT) && 'from-left',
+  );
+
+  const wrapperClass = classnames(`${cStyles.ns}-input`, 'wrapper');
 
   const showUnderline = (underlineAnimation !== UNDERLINE_NONE);
 
   return (
     <div className={wrapperClass} style={wrapperStyle}>
-      <input className={classNames} type="text" placeholder={placeholder} {...htmlProps} />
-      { placeholder && (<label className={labelClass}>{placeholder}</label>) }
+      <input className={inputClass} type="text" placeholder={placeholder} {...htmlProps} />
+      { placeholder && (<label>{placeholder}</label>) }
       { showUnderline && (<div className={underlineClass} />) }
-      { !!helpText && (<small className={helpTextClass}>{helpText}</small>) }
-      { !!errorText && (<small className={errorTextClass}>{errorText}</small>) }
+      { !!helpText && (<small className='help'>{helpText}</small>) }
+      { !!errorText && (<small className='error'>{errorText}</small>) }
     </div>
   );
 };
@@ -92,4 +93,4 @@ TextInput.defaultProps = {
   errorText: undefined,
 };
 
-export default withTheme<TextInputProps>(TextInput);
+export default withHephaestusContext<TextInputProps>(TextInput);

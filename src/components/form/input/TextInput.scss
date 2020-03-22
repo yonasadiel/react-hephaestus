@@ -1,0 +1,82 @@
+@import '../../../common/styles/base';
+
+$placeholderAnimationDuration: .2s;
+$labelAnimationDuration: .2s;
+
+.#{$ns}-input.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+
+  input {
+    border-width: 0 0 1px 0;
+    width: 100%;
+    border-color: rgba(0, 0, 0, 0.4);
+    padding: 8px 0;
+    background-color: transparent;
+    outline: none;
+    order: 1;
+
+    &::placeholder {
+      transition: opacity $placeholderAnimationDuration ease $labelAnimationDuration;
+      opacity: 1;
+    }
+
+    &:focus {
+      &::placeholder {
+        transition: opacity $placeholderAnimationDuration ease;
+        opacity: 0;
+      }
+
+      & ~ label {
+        opacity: .5;
+        top: 0;
+        transition:
+          top $labelAnimationDuration ease $placeholderAnimationDuration,
+          opacity $labelAnimationDuration ease $placeholderAnimationDuration;
+      }
+
+      & ~ div {
+        width: 100%;
+        transition: width 1s ease;
+      }
+    }
+  }
+
+  .underline {
+    width: 0%;
+    height: 2px;
+    transition: width 1s ease;
+    order: 1;
+
+    &.from-center {
+      margin: -2px auto 0 auto;
+    }
+
+    &.from-left {
+      margin: -2px 0 0 0;
+    }
+  }
+
+  label {
+    position: relative;
+    opacity: 0;
+    order: 0;
+    transition: top $labelAnimationDuration ease, opacity $labelAnimationDuration ease;
+    top: 10px;
+  }
+
+  .help {
+    margin-top: 2;
+    order: 2;
+    font-size: .75em;
+    color: #999999;
+  }
+
+  .error {
+    margin-top: 2;
+    order: 2;
+    font-size: .75em;
+    color: #ff2222;
+  }
+}

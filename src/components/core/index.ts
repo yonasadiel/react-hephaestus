@@ -10,3 +10,7 @@ export {
   CARD_TYPE_ELEVATED,
   CARD_TYPE_OUTLINED,
 } from './card/Card';
+
+export {
+  default as Modal
+} from './modal/Modal';

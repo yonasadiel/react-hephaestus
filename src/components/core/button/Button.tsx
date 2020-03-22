@@ -1,45 +1,43 @@
-import { css } from 'aphrodite/no-important';
+import classnames from 'classnames';
 import React from 'react';
 
-import hStyles from '../../../common/styles';
-import { ThemeProps, withTheme } from '../../../common/theme';
-import styles from './styles';
+import * as cStyles from '../../../common/styles/';
+import { InjectedThemeProps } from '../../../common/provider/theme';
+import { withHephaestusContext } from '../../../common/provider/';
+import './Button.scss';
 
 export const BUTTON_TYPE_CONTAINED = 'contained';
 export const BUTTON_TYPE_OUTLINED = 'outlined';
 export const BUTTON_TYPE_TEXT = 'text';
 
-type ButtonType = 'contained' | 'outlined' | 'text';
+export type ButtonType = 'contained' | 'outlined' | 'text';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   buttonType?: ButtonType;
 };
 
-const Button: React.FunctionComponent<ButtonProps & ThemeProps> = (props) => {
+const Button: React.FunctionComponent<ButtonProps & InjectedThemeProps> = (props) => {
   const {
     buttonType,
     className,
-    tStyles,
+    theme,
     ...htmlProps
   } = props;
 
-  const buttonClass = css(
-    styles.buttonStyles,
-    (buttonType === BUTTON_TYPE_CONTAINED) && hStyles.elevated,
-    (buttonType === BUTTON_TYPE_OUTLINED) && hStyles.outlined,
-
-    tStyles.borderColorPrimary,
-    (buttonType === BUTTON_TYPE_CONTAINED) && tStyles.bgColorPrimary,
-    (buttonType !== BUTTON_TYPE_CONTAINED) && tStyles.colorPrimary,
+  const buttonClass = classnames(
+    `${cStyles.ns}-button`,
+    buttonType,
+    theme.borderColorPrimary,
+    (buttonType === BUTTON_TYPE_CONTAINED) && theme.bgColorPrimary,
+    (buttonType !== BUTTON_TYPE_CONTAINED) && theme.colorPrimary,
+    className,
   );
 
-  const classNames = `${buttonClass} ${className}`;
-
-  return <button className={classNames} {...htmlProps} />;
+  return <button className={buttonClass} {...htmlProps} />;
 };
 
 Button.defaultProps = {
   buttonType: BUTTON_TYPE_CONTAINED,
 };
 
-export default withTheme<ButtonProps>(Button);
+export default withHephaestusContext<ButtonProps>(Button);

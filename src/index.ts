@@ -1,4 +1,4 @@
 export * from './components/core/';
 export * from './components/form/';
 
-export { default as ThemeProvider } from './common/theme';
+export { default as HephaestusProvider } from './common/provider/';

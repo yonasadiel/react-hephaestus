@@ -1,0 +1,37 @@
+@import '../../../common/styles/base';
+
+.#{$ns}-button {
+  display: inline-flex;
+  align-items: baseline;
+  flex-direction: row;
+  justify-content: center;
+
+  height: 36px;
+  min-width: 64px;
+  padding: 5px 15px;
+
+  border-radius: 5px;
+  border-style: solid;
+
+  cursor: pointer;
+
+  &.contained {
+    @extend .#{$ns}-elevated;
+    // background-color: theme color primary
+    color: #ffffff;
+    border-width: 0;
+  }
+
+  &.outlined {
+    @extend .#{$ns}-outlined;
+    background-color: transparent;
+    // color: theme color primary
+    border-width: 1px;
+  }
+
+  &.text {
+    background-color: transparent;
+    // color: theme color primary
+    border-width: 0;
+  }
+}

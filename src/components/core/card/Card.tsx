@@ -1,33 +1,34 @@
-import { css } from 'aphrodite/no-important';
+import classnames from 'classnames';
 import React from 'react';
 
-import hStyles from '../../../common/styles';
-import { ThemeProps, withTheme } from '../../../common/theme';
-import styles from './styles';
+import * as cStyles from '../../../common/styles/';
+import { InjectedThemeProps } from '../../../common/provider/theme';
+import { withHephaestusContext } from '../../../common/provider/';
+import './Card.scss';
 
 export const CARD_TYPE_ELEVATED = 'elevated';
 export const CARD_TYPE_OUTLINED = 'outlined';
 
-type CardType = 'elevated' | 'outlined';
+export type CardType = 'elevated' | 'outlined';
 
 export interface CardProps extends React.HTMLProps<HTMLDivElement> {
   cardType?: CardType;
 };
 
-const Card: React.FunctionComponent<CardProps & ThemeProps> = (props) => {
+const Card: React.FunctionComponent<CardProps & InjectedThemeProps> = (props) => {
   const {
     cardType,
     className,
-    tStyles,
+    theme,
     ...htmlProps
   } = props;
 
-  const cardClass = css(
-    styles.cardStyles,
-    (cardType === CARD_TYPE_ELEVATED) && hStyles.elevated,
-    (cardType === CARD_TYPE_OUTLINED) && hStyles.outlined,
+  const cardClass = classnames(
+    `${cStyles.ns}-card`,
+    (cardType === CARD_TYPE_ELEVATED) && cStyles.elevated,
+    (cardType === CARD_TYPE_OUTLINED) && cStyles.outlined,
 
-    tStyles.bgColorForeground,
+    theme.bgColorForeground,
   );
 
   const classNames = `${cardClass} ${className}`;
@@ -39,4 +40,4 @@ Card.defaultProps = {
   cardType: CARD_TYPE_ELEVATED,
 };
 
-export default withTheme<CardProps>(Card);
+export default withHephaestusContext<CardProps>(Card);

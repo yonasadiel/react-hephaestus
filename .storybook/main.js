@@ -1,14 +1,19 @@
+const path = require('path');
+
 module.exports = {
-  stories: ['../src/**/*.stories.(tsx|mdx)'],
+  stories: ['../src/**/*.stories.tsx'],
   addons: [
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        configureJSX: true,
-      },
-    },
     {
       name: '@storybook/preset-typescript',
     },
   ],
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+      include: path.resolve(__dirname, '../'),
+    });
+
+    return config;
+  },
 };
